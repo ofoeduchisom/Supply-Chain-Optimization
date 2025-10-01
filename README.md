@@ -1,78 +1,60 @@
-Supply Chain Optimization — Linear Programming
+## Supply Chain Optimization — Linear Programming
 
-A linear programming model designed to minimize shipping costs in a multi-supplier supply chain. The model determines the optimal allocation of products across suppliers while satisfying stock demand requirements and supplier availability constraints.
+A **linear programming model** designed to **minimize shipping costs** in a multi-supplier supply chain. The model determines the **optimal allocation of products across suppliers** while satisfying **stock demand requirements** and **supplier availability constraints**.  
 
-Result: Achieved a minimum total shipping cost of £279.00
+**Result:** Achieved a **minimum total shipping cost of £279.00**  
 
-📊 Dataset
+---
 
-Source: Sales company supply chain data
+### 📊 Dataset
+- **Source:** Sales company supply chain data  
+- **Key Variables:**  
+  - **SKU:** Product identifiers  
+  - **Stock levels:** Required quantity per product  
+  - **Availability:** Maximum units each supplier can provide  
+  - **Shipping costs:** Cost per unit from each supplier  
+  - **Supplier name:** Supplier identifiers  
+- **Size:** Multiple SKUs across 3 suppliers  
 
-Key Variables:
+---
 
-SKU: Product identifiers
+### ⚙️ Methodology
 
-Stock levels: Required quantity per product
+#### 1. Data Preprocessing
+- Created complete SKU–supplier combination matrix  
+- Handled missing shipping costs  
+- Scaled stock levels to match total supplier availability  
 
-Availability: Maximum units each supplier can provide
+#### 2. Model Formulation
+- **Decision Variables:** Quantity to ship from each supplier per SKU  
+- **Objective Function:** Minimize total shipping cost  
+- **Constraints:**  
+  - Meet required stock demand  
+  - Respect supplier capacity limits  
 
-Shipping costs: Cost per unit from each supplier
+#### 3. Optimization
+- Implemented using **PuLP (Python linear programming library)**  
+- Solved with LP solver to compute the **optimal allocation**  
 
-Supplier name: Supplier identifiers
+---
 
-Size: Multiple SKUs across 3 suppliers
+### 🚧 Challenges
+- **Data Completeness:** Missing SKU–supplier combinations required generating a complete pairing matrix  
+- **Constraint Balance:** Initial demand exceeded supply, requiring proportional scaling  
+- **Feasibility:** Adjusted model to ensure total demand aligned with supplier availability  
 
-⚙️ Methodology
-1. Data Preprocessing
+---
 
-Created complete SKU–supplier combination matrix
+### ✅ Key Features
+- Automated optimal allocation of products across suppliers  
+- Minimizes costs while satisfying real-world operational constraints  
+- Scalable to any number of products and suppliers  
+- Outputs clear shipment allocation per supplier  
 
-Handled missing shipping costs
+---
 
-Scaled stock levels to match total supplier availability
-
-2. Model Formulation
-
-Decision Variables: Quantity to ship from each supplier per SKU
-
-Objective Function: Minimize total shipping cost
-
-Constraints:
-
-Meet required stock demand
-
-Respect supplier capacity limits
-
-3. Optimization
-
-Implemented using PuLP (Python linear programming library)
-
-Solved with LP solver to compute the optimal allocation
-
-🚧 Challenges
-
-Data Completeness: Missing SKU–supplier combinations required generating a complete pairing matrix
-
-Constraint Balance: Initial demand exceeded supply, requiring proportional scaling
-
-Feasibility: Adjusted model to ensure total demand aligned with supplier availability
-
-✅ Key Features
-
-Automated optimal allocation of products across suppliers
-
-Minimizes costs while satisfying real-world operational constraints
-
-Scalable to any number of products and suppliers
-
-Outputs clear shipment allocation per supplier
-
-📌 Recommendations
-
-Procurement Strategy: Use outputs for weekly/monthly procurement planning to maintain cost efficiency
-
-Supplier Negotiations: Leverage high-volume allocations to negotiate better shipping rates
-
-Dynamic Updates: Integrate with real-time inventory data for continuous optimization
-
-Capacity Planning: Monitor supplier availability patterns to anticipate bottlenecks
+### 📌 Recommendations
+1. **Procurement Strategy:** Use outputs for weekly/monthly procurement planning to maintain cost efficiency  
+2. **Supplier Negotiations:** Leverage high-volume allocations to negotiate better shipping rates  
+3. **Dynamic Updates:** Integrate with real-time inventory data for continuous optimization  
+4. **Capacity Planning:** Monitor supplier availability patterns to anticipate bottlenecks  
